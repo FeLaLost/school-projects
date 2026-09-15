@@ -32,20 +32,3 @@ This repository contains my main projects from the Technical High School in Syst
 ![VS Code](https://img.shields.io/badge/VS%20Code-007ACC?style=flat-square&logo=visualstudiocode&logoColor=white)
 ![Git](https://img.shields.io/badge/Git-F05032?style=flat-square&logo=git&logoColor=white)
 ![Github](https://img.shields.io/badge/GitHub-181717?style=flat-square&logo=Github&logoColor=white)
-
-
- ---
-
-
-## 📋 Cronograma - 1 Bimestre 
-
-
-| Menção | Atividade | Data Entrega |Link | Obs|
-|--------|-----|-----|-|-|
-| M1 | ATV-CON-001-prog-introducao-programacao.md | 30/03/2026 | [Abrir](https://github.com/etecvav26-1C2-03/portfolio-pa/blob/main/01-Bimestre/1B-M1-Questionario.md)|Nome do arquivo: 1B-M1-Questionario.md |
-| M2 | ATV-POR-001-Lista-execicio-basico.md | 30/03/2026 | [Abrir](https://github.com/etecvav26-1C2-03/portfolio-pa/tree/main/01-Bimestre/eduardo-guilherme/portugol/Lista-01-Portugol)|Eduardo, Guilherme e Richard |
-| M3 | ATV-POR-002-Lista-execicio-CMD-SE.md | 10/04/2026 | [Abrir](https://github.com/etecvav26-1C2-03/portfolio-pa/tree/main/01-Bimestre/eduardo-guilherme/portugol/Lista-02-Portugol)|Eduardo, Guilherme e Richard |
-| M4 | ATV-POR-001-Lista-execicio-basico.md | 30/03/2026 | [Abrir](https://github.com/etecvav26-1C2-03/portfolio-pa/tree/main/01-Bimestre/felipe-gabriel/portugol/Lista-1-portugol)|Cauan, Felipe e Gabriel |
-| M5 | ATV-POR-002-Lista-execicio-CMD-SE.md | 10/04/2026 | [Abrir](https://github.com/etecvav26-1C2-03/portfolio-pa/tree/main/01-Bimestre/felipe-gabriel/portugol/Lista-2-portugol)|Cauan, Felipe e Gabriel |
-| M6 | Análise do Github do grupo | 10/04/2026 | Abrir |N/A |
-
