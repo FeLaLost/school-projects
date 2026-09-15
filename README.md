@@ -9,7 +9,7 @@ This repository contains my main projects from the Technical High School in Syst
 - This repository was created to document and showcase the knowledge gained during the systems development course. Throughout the activities, I completed exercises in various programming languages, learning how to solve problems using them.
 
 
-- The repository compiles exercises, projects, and activities completed during the courses, demonstrating learning progression and the practical application of the material studied. Furthermore, some of these projects were developed by four-person teams, fostering collaboration, task distribution, and knowledge sharing among group members.
+- The repository compiles exercises, projects, and activities completed during the course, demonstrating learning progression and the practical application of the material studied. Furthermore, some of these projects were developed by four-person teams, fostering collaboration, task distribution, and knowledge sharing among group members.
 
 
  ---
