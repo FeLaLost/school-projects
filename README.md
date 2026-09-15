@@ -1,7 +1,8 @@
 # school-projects
 This repository contains my main projects from the Technical High School in Systems Development.
 
-- Subjects: PA - PROGRAMMING AND ALGORITHMS
+### Subjects:
+- PA - PROGRAMMING AND ALGORITHMS
 - PW - WEB PROGRAMMING
 - BD - DATABASE
 
