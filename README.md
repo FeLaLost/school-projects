@@ -1,24 +1,37 @@
 # school-projects
 This repository contains my main projects from the Technical High School in Systems Development.
 
+
+ ---
+
+
+### Objective
+- This repository was created to document and showcase the knowledge gained during the systems development course. Throughout the activities, I completed exercises in various programming languages, learning how to solve problems using them.
+
+
+- The repository compiles exercises, projects, and activities completed during the courses, demonstrating learning progression and the practical application of the material studied. Furthermore, some of these projects were developed by four-person teams, fostering collaboration, task distribution, and knowledge sharing among group members.
+
+
+ ---
+
+ 
 ### Subjects:
 - PA - PROGRAMMING AND ALGORITHMS
 - PW - WEB PROGRAMMING
 - BD - DATABASE
 
-### Objective
-- Este repositorio foi desenvolvido com o objetivo de registrar e apresentar os conhecimentos adquiridos durante o curso de desenvolviento de sistemas, mostrando os conhecimentos adquiridos.  Ao longo das atividades, foram feitos exercicios em diversas linguagens, onde eu aprendi a resolver problemas com elas.
-This repository was created to document and showcase the knowledge gained during the systems development course. Throughout the activities, I completed exercises in various programming languages, learning how to solve problems using them.
 
-- O repositório reúne exercícios, projetos e atividades realizadas durante a disciplina, demonstrando a evolução do aprendizado e a aplicação prática dos conteúdos estudados. Além disso, este trabalho foi desenvolvido em equipe por quatro integrantes, promovendo a colaboração, a divisão de tarefas e o compartilhamento de conhecimentos entre os membros do grupo.
+ ---
 
-- Dessa forma, este portfólio serve como uma demonstração das habilidades desenvolvidas ao longo do curso e como um registro da trajetória de aprendizagem na área de programação.
+ 
+## Technical Skills:
 
+![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white)
+![SQL](https://img.shields.io/badge/SQL-4479A1?style=flat-square&logo=sql&logoColor=white)
+![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=flat-square&logo=html5&logoColor=white)
+![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=flat-square&logo=css3&logoColor=white)
+![Javascript](https://img.shields.io/badge/javascript-yellow?style=flat-square&logo=javascript&logoColor=black)
 
-### ➡️ Linguagem atual
-<img width="67" height="20" alt="python-badge" src="https://github.com/user-attachments/assets/0af04d35-e6fb-400b-8525-3906567d71f9" />
-
-### 👥 Trios
-
-- {Eduardo, Guilherme e Richard}
-- {Cauan, Felipe e Gabriel}
+![VS Code](https://img.shields.io/badge/VS%20Code-007ACC?style=flat-square&logo=visualstudiocode&logoColor=white)
+![Git](https://img.shields.io/badge/Git-F05032?style=flat-square&logo=git&logoColor=white)
+![Github](https://img.shields.io/badge/GitHub-181717?style=flat-square&logo=Github&logoColor=white)
