@@ -6,7 +6,7 @@
 * Each time the player enters a number, it must display whether the
 * guess is too high, too low, or correct. When it is correct,
 * display the number of guesses made.
-* (That was hell to do.)
+* (That was a hell to do.)
 */
 
 #include <iostream>
