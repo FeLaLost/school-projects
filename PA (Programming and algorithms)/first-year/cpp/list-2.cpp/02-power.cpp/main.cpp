@@ -13,13 +13,17 @@ using namespace std;
 
 int pon() {
     int base, power, mult = 1;
-  
+
+    cout << "Write the base: ";
     cin >> base;
+    cout << "Write the power: ";
     cin >> power;
+    
     for (int i=0; i<power; i++) {
         mult*=base;
     }
-    cout << multi;
+    
+    cout << "The result is: "; mult;
     return 0;
 }
 
