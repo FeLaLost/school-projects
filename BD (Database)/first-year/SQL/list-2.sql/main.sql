@@ -6,7 +6,7 @@
 
 create database bd_1c2_26
 go
-use bd_1c2_26_2
+use bd_1c2_26
 go
 
 --table for employees
