@@ -1,4 +1,8 @@
--- 
+/*
+* Date: 17/09/2026
+* Description:
+* This exercise list focuses on date operations.
+*/
 
 create database bd_1c2_26
 go
@@ -65,3 +69,5 @@ select name, day(birth) as day_birth from employee where month(birth) = 4 and ye
 
 -- 05 - Display the employees' names and dates of birth, plus two months.
 select name, dateadd(month, 2, birth) as birth from employee;
+
+
