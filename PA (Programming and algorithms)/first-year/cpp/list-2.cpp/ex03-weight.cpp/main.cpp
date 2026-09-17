@@ -26,15 +26,22 @@ float fem(float high) {
 int main() {
     string sex;
     float high;
-    cin >> sex >> high;
-    if (sex == "Masculino") {
-        cout << masc(high);
+
+    cout << "Write feminine or masculine: ";
+    cin >> sex;
+    cout << "What is yout height: ";
+    cin >> high;
+
+    // for masculine weight
+    if (sex == "masculine") {
+        cout << "Your ideal weight is: " << masc(high);
     }
-    else if (sex == "Feminino") {
-        cout << fem(high);
+    // for feminine weight
+    else if (sex == "feminine") {
+        cout << "Your ideal weight is: " << fem(high);
     }
     else {
-        cout << "write Feminino or Masculino";
+        cout << "You didn't enter a valid gender.";
     }
     return 0;
 }
