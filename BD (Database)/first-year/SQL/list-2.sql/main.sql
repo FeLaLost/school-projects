@@ -70,4 +70,11 @@ select name, day(birth) as day_birth from employee where month(birth) = 4 and ye
 -- 05 - Display the employees' names and dates of birth, plus two months.
 select name, dateadd(month, 2, birth) as birth from employee;
 
+-- 06 - Display the employees' names and ages, calculating the age based on their date of birth and today's date.
+select name, datediff(year, birth, getdate()) - case when month(birth) > month(getdate()) or (month(birth) = month(getdate()) and day(birth) > day(getdate())) then 1 else 0 end as age from employee;
 
+--07 - Display the employee ID, name, and birth year of employees born between March and May 1990.
+select idemployee, name, year(birth) as birth_year from employee where birth between '1990-03-01' and '1990-05-31';
+
+-- 08 - Display the name and year of birth of employees from the state of São Paulo.
+select name, year(birth) as birth_year from employee where state = 'sp';
