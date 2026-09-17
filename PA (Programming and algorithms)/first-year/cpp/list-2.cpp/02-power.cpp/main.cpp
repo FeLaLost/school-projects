@@ -18,12 +18,13 @@ int pon() {
     cin >> base;
     cout << "Write the power: ";
     cin >> power;
-    
+
+    //repetition to calculate the power
     for (int i=0; i<power; i++) {
         mult*=base;
     }
     
-    cout << "The result is: "; mult;
+    cout << "The result is: " << mult;
     return 0;
 }
 
