@@ -1,3 +1,5 @@
+-- 
+
 create database bd_1c2_26
 go
 use bd_1c2_26_2
@@ -45,3 +47,21 @@ go
 '1991-06-20','TI',1100,1),
 (11,'Ivo Cunha','Rua Nicolau Coelho, 22','São Paulo', 'SP','cis@bol.com.br','1988-04-30',
 'PC',2200,1) 
+go
+
+-- exercices --
+
+-- 01 - Display the employees' names and dates of birth, separating the day, month, and year into columns.
+select name, day(birth) as day, month(birth) as month, year(birth) as year from employee
+
+-- 02 - Display the names of the months from the employees' dates of birth, sorted and without duplicates.
+select datename(month, birth) as month_name from employee group by datename(month, birth), month(birth) order by month(birth);
+
+-- 03 - Display the idemployee of all employees born in 1987.
+select idemployee from employee where year(birth) = 1987;
+
+-- 04 - Display the name and day of birth of employees born in April 1988. 
+select name, day(birth) as day_birth from employee where month(birth) = 4 and year(birth) = 1988;
+
+-- 05 - Display the employees' names and dates of birth, plus two months.
+select name, dateadd(month, 2, birth) as birth from employee;
