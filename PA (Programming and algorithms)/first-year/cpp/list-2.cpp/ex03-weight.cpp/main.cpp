@@ -12,14 +12,17 @@
 #include <algorithm>
 using namespace std;
 
+//function for male
 float masc(float high) {
     return 72.7 * high - 58;
 }
 
+//function for female
 float fem(float high) {
     return 62.1 * high - 44.7;
 }
 
+//main
 int main() {
     string sex;
     float high;
