@@ -78,3 +78,15 @@ select idemployee, name, year(birth) as birth_year from employee where birth bet
 
 -- 08 - Display the name and year of birth of employees from the state of São Paulo.
 select name, year(birth) as birth_year from employee where state = 'sp';
+
+-- 09 - Display the names and dates of birth of employees born before 1990.
+select name, birth from employee where year(birth) < 1990;
+
+-- 10 - Display the city and state of employees born after 1989, without repeating the data.
+select distinct city, state from employee where year(birth) > 1989;
+
+-- 11 - Display all data for employees born in the years 1988 and 1990.
+select * from employee where year(birth) in (1988, 1990);
+
+-- 12 - Display the names of employees born on the 30th.
+select name from employee where day(birth) = 30;
