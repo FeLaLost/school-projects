@@ -18,11 +18,13 @@ int main() {
     cout << "Write the letter you want to know the count for: ";
     cin >> lettercount;
 
+    //loop to write all the letters
     for (int i = 0; i < n; i++){
         cout << "Write a letter: " ; 
         cin >> letter[i];
     }
 
+    //makes the letter count
     for (char c : letter) {
         if (c == lettercount) sum++;
     }
