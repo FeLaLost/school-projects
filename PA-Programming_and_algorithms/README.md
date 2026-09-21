@@ -19,3 +19,8 @@ Focuses only on the information essential to solving the problem, ignoring unnec
 
 - 4 - Algorithm:
 The step-by-step process for solving the problem from start to finish (the code).
+
+
+### conclusion:
+
+Computational thinking is not something meant only for computers or programmers; it is a way of thinking and solving problems.
