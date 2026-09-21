@@ -8,6 +8,7 @@ This repository contains my main projects from the Technical High School in Syst
 
 - The repository compiles exercises, projects, and activities completed during the course, demonstrating learning progression and the practical application of the material studied. Furthermore, some of these projects were developed by four-person team, fostering collaboration, task distribution, and knowledge sharing among group members.
 
+- Obs: The exercises and projects developed during the first year of the course represented my first contact with programming, which is why they are simple projects.
 
  ---
 
