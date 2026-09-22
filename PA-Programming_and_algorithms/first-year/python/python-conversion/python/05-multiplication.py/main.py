@@ -1,5 +1,5 @@
 '''
-* (Already solved exercice in C++)
+* (Converted exercice in python)
 * Date: 11/08/2026
 * Description: Reads a number from 1 to 10 and displays the multiplication table.
 '''
