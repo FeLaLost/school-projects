@@ -31,3 +31,34 @@ INSERT INTO employees VALUES (006, 'Guilherme Miguel Rodrigues Pereira Lakonski'
 INSERT INTO employees VALUES (007, 'Kevin Silva Fernandes', 67.67, 'Campinas', 'Vigilante', 'kevini.protini@hotmail.com');
 
 go
+
+-- exercices
+
+-- 01 - Display the name and salary of the employees, adding 30% to the salary amount. Name the new column new_salary.
+SELECT  name, salary, salary * 1.3 AS new_salary FROM employees;
+
+-- 02 - Display the name, salary, and salary with a 20% discount; create a new column called "salary_discount" for employees in the city of Campinas.
+SELECT  name, salary, salary * 0.80 AS salary_discount FROM employees WHERE city = 'Campinas';
+
+-- 03 - List the names and salaries of employees who earn more than 1500.
+SELECT name, salary FROM employees WHERE salary > 1500;
+
+-- 04 - Display the name and city of employees who are not from the city of Valinhos. Do this in at least two different ways.
+SELECT name, city FROM employees WHERE city != 'Valinhos';
+
+SELECT name, city FROM employees WHERE city NOT LIKE 'Valinhos';
+
+-- 05 - Display employee ID and city of employees from Valinhos or Campinas.
+SELECT idemployee, city FROM employees WHERE city = 'Campinas' OR city = 'Valinhos';
+
+-- 06 - Show the employee ID, position, and salary of employees who are not from the city of São Paulo and whose salary is greater than or equal to 1000.
+SELECT idemployee, position, salary FROM employees WHERE city != 'São Paulo' and salary >= 1000.00;
+
+-- 07 - Display the names of employees who do not have a position.
+SELECT name FROM employees WHERE position IS NULL;
+
+-- 08 - Display the name and salary of employees with salaries between 500 and 1500.
+SELECT name, salary FROM employees WHERE salary >= 500 and salary <= 1500;
+
+-- 09 - Display the name and email address of employees who use "Hotmail".
+SELECT name, email FROM employees WHERE email LIKE '%hotmail%';
