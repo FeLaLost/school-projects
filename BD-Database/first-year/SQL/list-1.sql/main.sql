@@ -62,3 +62,12 @@ SELECT name, salary FROM employees WHERE salary >= 500 and salary <= 1500;
 
 -- 09 - Display the name and email address of employees who use "Hotmail".
 SELECT name, email FROM employees WHERE email LIKE '%hotmail%';
+
+-- 10 - Display the names and emails of employees who have a Brazilian email address (.br).
+SELECT name, email FROM employees WHERE email LIKE '%.br%';
+
+-- 11 - Display the names and emails of employees who use an email address that does not end with “.com”.
+SELECT name, email FROM employees WHERE email NOT LIKE '%.com';
+
+-- 12 - Display the names and emails of employees who have the letter "r" in the third position of their name.
+SELECT name, email FROM employees WHERE name LIKE '__r%';
