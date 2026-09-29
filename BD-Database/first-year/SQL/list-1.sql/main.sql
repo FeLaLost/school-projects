@@ -9,6 +9,7 @@ go
 USE LanternStore
 go
 
+-- table
 CREATE TABLE employees (
 	idemployee INT PRIMARY KEY,
 	name VARCHAR(100),
