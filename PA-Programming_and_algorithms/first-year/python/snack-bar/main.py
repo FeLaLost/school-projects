@@ -1,7 +1,7 @@
 import json
 import os
 
-DATA_FILE = "lanterna_lanchote.json"
+DATA_FILE = "lantern_snack_bar.json"
 
 produtos = []
 pedidos = []

@@ -1,0 +1,680 @@
+/*  IMPORTAÇÃO DE FONTES (Google Fonts) */
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,600;1,300&family=DM+Serif+Display:ital@0;1&display=swap');
+
+
+/* as variaveis globais roots de estilo */
+:root {
+  --preto:       #0a0a0a;         
+  --branco:      #f5f0e8;         
+  --amarelo:     #f5c518;         
+  --vermelho-c:  #e8432d;        
+  --cinza-e:     #2a2a2a;         
+  --cinza-c:     #555555;         
+
+  /* Famílias de fonte   */
+  --fonte-titulo: 'Bebas Neue', sans-serif;
+  --fonte-serif:  'DM Serif Display', serif;
+  --fonte-corpo:  'DM Sans', sans-serif;
+
+  --raio:    4px;                  
+  --sombra:  4px 4px 0px var(--preto); 
+}
+
+
+/* reset para evitar bugs(reload)*/
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Rolagem suave ao clicar em links */
+html { scroll-behavior: smooth; }
+
+/* Estilos base do corpo da página */
+body {
+  background-color: var(--branco);
+  color: var(--preto);
+  font-family: var(--fonte-corpo);
+  font-size: 16px;
+  line-height: 1.7;       
+  overflow-x: hidden;     
+}
+
+/* Remove sublinhado e herda a cor do pai em todos os links */
+a { color: inherit; text-decoration: none; }
+
+/* inline gap (para nao ultrapssar a linha) */
+img { max-width: 100%; display: block; }
+
+/* Remove marcadores de listas globalmente */
+ul { list-style: none; }
+
+
+/* ANIMAÇÕES  @keyframes */
+
+/* Aparece subindo levemente */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Aparece vindo da esquerda */
+@keyframes slideIn {
+  from { opacity: 0; transform: translateX(-40px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+/* Move um elemento infinitamente para a esquerda */
+@keyframes marqueeScroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); } /* conteudo duplicado corte pela metade */
+}
+
+/* Classes que aplicam as animações acima */
+.fade-up  { animation: fadeUp  0.7s ease both; }
+.slide-in { animation: slideIn 0.7s ease both; }
+
+
+/* NAVBAR  */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--preto);
+  display: flex;
+  align-items: center;          
+  justify-content: space-between; 
+  padding: 0 2.5rem;
+  height: 64px;
+  border-bottom: 3px solid var(--amarelo); 
+}
+
+/* Logotipo em estilo tipográfico */
+.navbar .logo {
+  font-family: var(--fonte-titulo);
+  font-size: 1.8rem;
+  color: var(--amarelo);
+  letter-spacing: 2px;
+}
+
+/* Links do menu em linha horizontal */
+.navbar nav ul {
+  display: flex;
+  gap: 2rem; /* espaço entre */
+}
+
+.navbar nav a {
+  font-family: var(--fonte-corpo);
+  font-weight: 600;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--branco);
+  transition: color 0.2s;  /* transição suave ao mudar a cor no hover */
+  position: relative;      
+}
+
+/*
+  Underline animado começca em 0 vai ate 100% ".
+*/
+.navbar nav a::after {
+  content: '';              
+  position: absolute;
+  left: 0; bottom: -4px;
+  width: 0;                 /* começa invisível */
+  height: 2px;
+  background: var(--amarelo);
+  transition: width 0.3s;
+}
+.navbar nav a:hover { color: var(--amarelo); }
+.navbar nav a:hover::after { width: 100%; } /* expande no hover */
+.navbar nav a.ativo { color: var(--amarelo); } /* link da página atual */
+
+
+/* BOTÕES  (.btn e variantes) */
+.btn {
+  display: inline-block;
+  padding: 0.75rem 1.75rem;
+  font-family: var(--fonte-corpo);
+  font-weight: 600;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  border: 2px solid var(--preto);
+  box-shadow: var(--sombra);
+  transition: transform 0.15s, box-shadow 0.15s;
+  cursor: pointer;
+}
+.btn:hover {
+  transform: translate(-2px, -2px); /* sobe e vai levemente para esquerda */
+  box-shadow: 6px 6px 0px var(--preto); /* sombra aumenta — cria ilusão 3D */
+}
+
+/* Variantes de cor */
+.btn-amarelo { background: var(--amarelo); color: var(--preto); }
+.btn-coral   { background: var(--vermelho-c); color: var(--branco); }
+.btn-outline {
+  background: transparent; /* fundo transparente — só a borda aparece */
+  color: var(--preto);
+  border-color: var(--preto);
+}
+
+
+/* (faixa de texto em loop)
+   A técnica: duplicar o conteúdo e mover -50% cria loop perfeito.
+   overflow: hidden esconde o que está fora do wrapper. */
+.marquee-wrap {
+  background: var(--amarelo);
+  padding: 0.6rem 0;
+  overflow: hidden;
+  border-top: 2px solid var(--preto);
+  border-bottom: 2px solid var(--preto);
+}
+.marquee-track {
+  display: flex;
+  width: max-content;          
+  animation: marqueeScroll 20s linear infinite;
+}
+.marquee-track span {
+  font-family: var(--fonte-titulo);
+  font-size: 1.2rem;
+  letter-spacing: 3px;
+  padding: 0 2rem;             /* espaço  */
+  color: var(--preto);
+}
+
+
+/* HERO  (seção principal / capa) */
+.hero {
+  min-height: 88vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* duas colunas de peso igual */
+  align-items: center;
+  padding: 4rem 2.5rem;
+  gap: 3rem;
+  position: relative; /* necessário para o ::before funcionar */
+  overflow: hidden;
+}
+
+/*
+  Marca d'água decorativa "DG" no fundo.
+  pointer-events: none → não bloqueia cliques.
+  Usa font-size enorme (30vw = 30% da largura da viewport).
+*/
+.hero::before {
+  content: 'DG';
+  position: absolute;
+  right: -40px; bottom: -60px;
+  font-family: var(--fonte-titulo);
+  font-size: 30vw;
+  color: rgba(0,0,0,0.04); /* quase invisível — só textura */
+  pointer-events: none;
+  line-height: 1;
+}
+
+.hero-texto { animation: fadeUp 0.8s ease both; }
+
+/* Tag/badge pequena acima do título (ex: "NOVO", "EM DESTAQUE") */
+.hero-tag {
+  display: inline-block;
+  background: var(--vermelho-c);
+  color: var(--branco);
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  padding: 0.3rem 0.8rem;
+  margin-bottom: 1.5rem;
+}
+
+/*
+  clamp(mínimo, ideal, máximo) → tamanho fluido:
+  nunca menor que 4rem, nunca maior que 8rem,
+  tentando manter 8vw (8% da largura da janela).
+*/
+.hero-titulo {
+  font-family: var(--fonte-titulo);
+  font-size: clamp(4rem, 8vw, 8rem);
+  line-height: 0.95;    /* linhas bem juntas — impacto visual */
+  letter-spacing: 2px;
+  margin-bottom: 1.5rem;
+}
+
+/* Palavra em itálico serif dentro do título = contraste tipográfico */
+.hero-titulo em {
+  font-family: var(--fonte-serif);
+  font-style: italic;
+  color: var(--vermelho-c);
+}
+
+.hero-sub {
+  font-size: 1.05rem;
+  color: var(--cinza-c);
+  max-width: 480px;     /* limita largura para melhor leitura */
+  margin-bottom: 2rem;
+}
+
+/* Container dos botões lado a lado, com quebra em telas pequenas */
+.hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+/* Lado direito do hero com a imagem */
+.hero-visual {
+  position: relative;           /* permite posicionar .hero-badge absolutamente */
+  animation: fadeUp 0.8s 0.2s ease both; /* 0.2s de delay — aparece depois do texto */
+}
+
+.hero-card-img {
+  width: 100%;
+  aspect-ratio: 4/5;       /* proporção retrato fixa (ex: pôster de filme) */
+  object-fit: cover;        /* preenche sem distorcer a imagem */
+  border: 3px solid var(--preto);
+  box-shadow: 8px 8px 0 var(--preto);
+}
+
+/*
+  Badge flutuante no canto inferior esquerdo da imagem.
+  position: absolute funciona pois .hero-visual tem position: relative.
+*/
+.hero-badge {
+  position: absolute;
+  bottom: -24px; left: -24px; /* sai levemente para fora da imagem */
+  background: var(--amarelo);
+  border: 3px solid var(--preto);
+  box-shadow: 4px 4px 0 var(--preto);
+  padding: 1rem 1.25rem;
+  font-family: var(--fonte-titulo);
+  font-size: 1rem;
+  letter-spacing: 1px;
+}
+
+
+/*  Padding  para deixar mais limpo o visual. */
+.secao { padding: 5rem 2.5rem; }
+
+/* Cabeçalho de seção: número grande + título alinhados na base */
+.secao-topo {
+  display: flex;
+  align-items: baseline; /* alinha na linha de base do texto */
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+
+/* Número decorativo com contorno (-webkit-text-stroke) */
+.secao-num {
+  font-family: var(--fonte-titulo);
+  font-size: 5rem;
+  color: var(--amarelo);
+  line-height: 1;
+  -webkit-text-stroke: 2px var(--preto); /* borda no próprio texto */
+}
+
+.secao-titulo {
+  font-family: var(--fonte-titulo);
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  letter-spacing: 1px;
+  line-height: 1;
+}
+
+.secao-subtitulo {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  color: var(--cinza-c);
+  margin-bottom: 0.5rem;
+}
+
+
+/* CARDS GRID */
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.card {
+  border: 2px solid var(--preto);
+  box-shadow: var(--sombra);
+  padding: 1.75rem;
+  background: var(--branco);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+/* Hover: sobe e aumenta sombra — mesmo efeito dos botões */
+.card:hover {
+  transform: translate(-3px, -3px);
+  box-shadow: 7px 7px 0 var(--preto);
+}
+
+.card-icone { font-size: 2rem; margin-bottom: 1rem; }
+.card h3 {
+  font-family: var(--fonte-serif);
+  font-size: 1.3rem;
+  margin-bottom: 0.5rem;
+}
+.card p { font-size: 0.92rem; color: var(--cinza-c); }
+
+
+/* TABELA DE SALÁRIOS */
+.tabela-wrap { overflow-x: auto; } 
+
+.tabela-salario {
+  width: 100%;
+  border-collapse: collapse;
+  border: 2px solid var(--preto);
+  font-size: 0.95rem;
+}
+.tabela-salario th {
+  background: var(--preto);
+  color: var(--amarelo);
+  font-family: var(--fonte-titulo);
+  font-size: 1rem;
+  letter-spacing: 1px;
+  padding: 0.9rem 1.2rem;
+  text-align: left;
+}
+.tabela-salario td {
+  padding: 0.9rem 1.2rem;
+  border-bottom: 1px solid rgba(0,0,0,0.1);
+}
+
+/* Listras zebradas: linhas pares com fundo levemente amarelado */
+.tabela-salario tr:nth-child(even) td { background: rgba(245,197,24,0.12); }
+
+/* Hover na linha inteira */
+.tabela-salario tr:hover td { background: rgba(245,197,24,0.25); }
+
+.destaque { font-weight: 600; } /* texto em negrito para valores importantes */
+
+
+/* LISTA COM ÍCONE TRIANGULAR  triangulo feito sem html extra aqui mesmo */
+.lista-bold li {
+  display: flex;
+  align-items: flex-start;  /* alinha ao topo quando o texto quebra linha */
+  gap: 0.75rem;
+  padding: 0.8rem 0;
+  border-bottom: 1px solid rgba(0,0,0,0.08);
+  font-size: 0.95rem;
+}
+.lista-bold li::before {
+  content: '▶';             /* ícone decorativo gerado por CSS */
+  color: var(--vermelho-c);
+  font-size: 0.7rem;
+  margin-top: 5px;          /* alinha verticalmente com o texto */
+  flex-shrink: 0;           /* não deixa o ícone encolher */
+}
+
+
+/* FAIXA DE DESTAQUE (CTA / banner de chamada) - compativel com telas pequenas tipo celular */
+.faixa-destaque {
+  background: var(--preto);
+  color: var(--branco);
+  padding: 4rem 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  flex-wrap: wrap;
+  border-top: 3px solid var(--amarelo);
+  border-bottom: 3px solid var(--amarelo);
+}
+.faixa-destaque h2 {
+  font-family: var(--fonte-titulo);
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  max-width: 600px;
+  line-height: 1;
+}
+.faixa-destaque h2 em {
+  color: var(--amarelo);
+  font-family: var(--fonte-serif); /* contraste tipográfico dentro do título */
+}
+
+
+/* cabeçalho de páginas internas */
+.hero-interno {
+  background: var(--preto);
+  color: var(--branco);
+  padding: 5rem 2.5rem 4rem;
+  position: relative;
+  overflow: hidden;
+}
+.hero-interno::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0;
+  width: 100%; height: 4px;
+  background: linear-gradient(to right, var(--amarelo), var(--vermelho-c));
+}
+.hero-interno .tag-pg {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  color: var(--amarelo);
+  margin-bottom: 1rem;
+}
+.hero-interno h1 {
+  font-family: var(--fonte-titulo);
+  font-size: clamp(3rem, 7vw, 6rem);
+  line-height: 0.95;
+  letter-spacing: 1px;
+  margin-bottom: 1.25rem;
+}
+.hero-interno h1 em {
+  font-family: var(--fonte-serif);
+  color: var(--vermelho-c);
+}
+.hero-interno p {
+  font-size: 1.05rem;
+  color: rgba(245,240,232,0.7); /* branco com 70% de opacidade — hierarquia */
+  max-width: 600px;
+}
+
+
+/* GRID DE UNIVERSIDADES  (.univ-grid)
+   Mesmo padrão auto-fill do cards-grid, coluna mínima de 300px. */
+
+.univ-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.25rem;
+}
+.univ-card {
+  border: 2px solid var(--preto);
+  box-shadow: var(--sombra);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column; /* empilha os filhos verticalmente */
+  gap: 0.4rem;
+  background: var(--branco);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.univ-card:hover {
+  transform: translate(-3px, -3px);
+  box-shadow: 7px 7px 0 var(--preto);
+}
+
+/* Sigla da universidade como badge amarelo */
+.univ-sigla {
+  display: inline-block;
+  background: var(--amarelo);
+  border: 2px solid var(--preto);
+  font-family: var(--fonte-titulo);
+  font-size: 1.1rem;
+  padding: 0.15rem 0.6rem;
+  margin-bottom: 0.5rem;
+}
+
+.univ-card h3 { font-family: var(--fonte-serif); font-size: 1.15rem; }
+.univ-card .local {
+  font-size: 0.82rem;
+  color: var(--cinza-c);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.univ-card p { font-size: 0.9rem; color: var(--cinza-c); }
+
+
+/* GRID para as empresas */
+.emp-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1rem;
+}
+.emp-card {
+  border: 2px solid var(--preto);
+  box-shadow: var(--sombra);
+  padding: 1.5rem 1.25rem;
+  background: var(--branco);
+  text-align: center;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.emp-card:hover {
+  transform: translate(-3px, -3px);
+  box-shadow: 7px 7px 0 var(--preto);
+  background: var(--amarelo); /* fundo muda completamente no hover */
+}
+.emp-card .emp-ico { font-size: 2.5rem; margin-bottom: 0.75rem; }
+.emp-card h4 { font-family: var(--fonte-serif); font-size: 1.1rem; margin-bottom: 0.3rem; }
+.emp-card p { font-size: 0.82rem; color: var(--cinza-c); }
+
+
+/* grid para as seçoes */
+.sobre-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: start;
+}
+.sobre-img {
+  width: 100%;
+  aspect-ratio: 3/4; /* retrato */
+  object-fit: cover;
+  border: 3px solid var(--preto);
+  box-shadow: 8px 8px 0 var(--preto);
+}
+.sobre-texto h2 {
+  font-family: var(--fonte-titulo);
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+.sobre-texto p { margin-bottom: 1rem; color: var(--cinza-c); }
+
+
+/* BOX DE REFERÊNCIAS */
+.referencias {
+  background: var(--cinza-e);
+  color: var(--branco);
+  padding: 2.5rem;
+  margin-top: 2rem;
+  border-left: 6px solid var(--amarelo); /* linha de ênfase lateral */
+}
+.referencias h3 {
+  font-family: var(--fonte-titulo);
+  font-size: 1.5rem;
+  color: var(--amarelo);
+  margin-bottom: 1.5rem;
+  letter-spacing: 1px;
+}
+.referencias ol { padding-left: 1.5rem; } /* numeração */
+.referencias li {
+  font-size: 0.88rem;
+  line-height: 1.8;
+  color: rgba(245,240,232,0.8); /* levemente transparente  */
+  margin-bottom: 0.75rem;
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+  padding-bottom: 0.75rem;
+}
+
+
+/* grid para o rodaóe */
+footer {
+  background: var(--preto);
+  color: var(--branco);
+  padding: 3rem 2.5rem 1.5rem;
+  border-top: 4px solid var(--amarelo);
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr; /* coluna esquerda tem o dobro de tamanho do que as outras */
+  gap: 3rem;
+  margin-bottom: 2.5rem;
+}
+
+.footer-logo {
+  font-family: var(--fonte-titulo);
+  font-size: 2.5rem;
+  color: var(--amarelo);
+  letter-spacing: 3px;
+  margin-bottom: 0.75rem;
+}
+
+/* Texto  */
+.footer-desc {
+  font-size: 0.88rem;
+  color: rgba(245,240,232,0.5);
+  max-width: 280px;
+}
+
+footer h4 {
+  font-family: var(--fonte-titulo);
+  font-size: 1rem;
+  letter-spacing: 2px;
+  color: var(--amarelo);
+  margin-bottom: 1rem;
+}
+footer ul li { margin-bottom: 0.5rem; }
+footer ul a {
+  font-size: 0.88rem;
+  color: rgba(245,240,232,0.6); /* cinza suave — links secundários */
+  transition: color 0.2s;
+}
+footer ul a:hover { color: var(--amarelo); }
+
+/* Linha inferior do rodape */
+.footer-bottom {
+  border-top: 1px solid rgba(255,255,255,0.1);
+  padding-top: 1.25rem;
+  font-size: 0.8rem;
+  color: rgba(245,240,232,0.35);
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+
+/* RESPONSIVIDADE  - compatibilidade para telas menores tipo celular @media */
+@media (max-width: 768px) {
+  /* Hero vai para coluna única */
+  .hero {
+    grid-template-columns: 1fr;
+    min-height: auto;
+    padding: 3rem 1.5rem;
+  }
+
+  /* Marca d'água decorativa some no mobile (não cabe bem) */
+  .hero::before { display: none; }
+
+  /* Lado visual do hero some — só o texto aparece no mobile */
+  .hero-visual { display: none; }
+
+  /* Seção sobre: empilha imagem e texto */
+  .sobre-grid { grid-template-columns: 1fr; }
+
+  /* Rodapé: 3 colunas → 1 coluna */
+  .footer-grid { grid-template-columns: 1fr; }
+
+  /* Menos padding lateral no mobile */
+  .navbar { padding: 0 1.5rem; }
+
+  /* Links do menu mais próximos (menos gap) */
+  .navbar nav ul { gap: 1rem; }
+
+  /* Menos padding nas seções */
+  .secao { padding: 3rem 1.5rem; }
+  .faixa-destaque { padding: 3rem 1.5rem; }
+  .hero-interno { padding: 3rem 1.5rem; }
+}
