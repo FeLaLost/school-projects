@@ -10,13 +10,14 @@ This repository contains my main projects from the Technical High School in Syst
 
 - Obs: The exercises and projects developed during the first year of the course represented my first contact with programming, which is why they are simple projects.
 
+
  ---
 
  
 ### Subjects:
+- BD - DATABASE
 - PA - PROGRAMMING AND ALGORITHMS
 - PW - WEB PROGRAMMING
-- BD - DATABASE
 
 
  ---
