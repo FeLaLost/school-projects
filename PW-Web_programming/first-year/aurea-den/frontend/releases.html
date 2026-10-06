@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Áurea Den - Lançamentos</title>
+  <link rel="stylesheet" href="style/style.css" />
+  <script>
+    (function () {
+      if (localStorage.getItem("tema_aurea_den") === "claro") {
+        document.documentElement.setAttribute("data-tema", "claro");
+      }
+    })();
+  </script>
+</head>
+<body>
+
+  <header>
+    <div class="logo"><img src="img/logo-aurea-den.png" alt="Áurea Den" /></div>
+    <nav>
+      <ul>
+        <li><a href="index.html">Início</a></li>
+        <li><a href="lists.html">Listas</a></li>
+        <li><a href="releases.html" class="link-ativo">Lançamentos</a></li>
+        <li><a href="genres.html">Gênero</a></li>
+        <li><a href="credits.html">Créditos</a></li>
+      </ul>
+    </nav>
+    <div class="acoes-header">
+      <input type="text" id="campo-busca" placeholder="Buscar filmes..." />
+      <button id="botao-tema" title="Alternar tema claro/escuro" aria-label="Alternar tema claro/escuro"></button>
+      <button id="botao-conta">Conta</button>
+    </div>
+  </header>
+
+  <!-- modal de login/cadastro -->
+  <div id="modal-auth" class="escondido">
+    <div class="caixa-modal">
+      <button id="fechar-modal">×</button>
+
+      <div id="area-login">
+        <h2>Entrar</h2>
+        <form id="form-login">
+          <input type="text" id="login-usuario" placeholder="Usuário" required />
+          <input type="password" id="login-senha" placeholder="Senha" required />
+          <button type="submit">Entrar</button>
+        </form>
+        <p>Não tem conta? <a href="#" id="ir-para-cadastro">Cadastre-se</a></p>
+        <p id="login-erro" class="erro"></p>
+      </div>
+
+      <div id="area-cadastro" class="escondido">
+        <h2>Criar conta</h2>
+        <form id="form-cadastro">
+          <input type="text" id="cadastro-usuario" placeholder="Usuário" required />
+          <input type="password" id="cadastro-senha" placeholder="Senha" required />
+          <select id="cadastro-role">
+            <option value="CLIENT" selected>Cliente</option>
+            <option value="ADM">Administrador</option>
+          </select>
+          <button type="submit">Cadastrar</button>
+        </form>
+        <p>Já tem conta? <a href="#" id="ir-para-login">Entrar</a></p>
+        <p id="cadastro-erro" class="erro"></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- modal que abre quando clica em um filme, pra ver os detalhes -->
+  <div id="modal-detalhes" class="escondido">
+    <div class="caixa-modal caixa-modal-filme">
+      <button id="fechar-modal-detalhes">×</button>
+      <img id="detalhes-capa" src="" alt="" />
+      <div class="texto-detalhes">
+        <h2 id="detalhes-titulo"></h2>
+        <p id="detalhes-nota"></p>
+        <p id="detalhes-descricao"></p>
+      </div>
+    </div>
+  </div>
+
+  <main>
+    <section id="secao-lancamentos">
+      <div class="cabecalho-secao">
+        <h2>Lançamentos</h2>
+      </div>
+
+      <!--
+        obs: por enquanto o banco não tem um campo de "data de lançamento",
+        então essa página só mostra os filmes cadastrados por ordem de id
+        (os mais novos ficam por último). dava pra melhorar isso depois
+        adicionando uma coluna de data no model Movie.
+      -->
+      <div class="linha-filtros-topo linha-filtros-topo-fim">
+        <button id="botao-ordenar-nota" class="botao-ordenar-icone" type="button" data-ordem="nenhuma"></button>
+      </div>
+
+      <div id="grade-filmes"></div>
+    </section>
+  </main>
+
+  <footer class="rodape-site">
+    <div class="rodape-conteudo">
+      <div class="rodape-marca">
+        <div class="logo"><img src="img/logo-aurea-den.png" alt="Áurea Den" /></div>
+        <p>Catálogo de filmes feito como trabalho de ETEC pela equipe Devs Den.</p>
+      </div>
+      <div class="rodape-links">
+        <a href="credits.html">Créditos</a>
+        <a href="https://github.com/etecvav26-1C2-03" target="_blank" rel="noopener noreferrer">GitHub da equipe</a>
+      </div>
+    </div>
+    <p class="rodape-copy">© 2026 Devs Den — Projeto acadêmico, ETEC.</p>
+  </footer>
+
+  <script src="js/tema.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/render-movies.js"></script>
+  <script src="js/busca.js"></script>
+  <script src="js/ordenacao.js"></script>
+  <script src="js/releases.js"></script>
+</body>
+</html>
