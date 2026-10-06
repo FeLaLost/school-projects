@@ -1,77 +1,77 @@
-/*  IMPORTING FONTS (Google Fonts) */
+/*  IMPORTAÇÃO DE FONTES (Google Fonts) */
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,600;1,300&family=DM+Serif+Display:ital@0;1&display=swap');
 
 
-/* the global style root variables */
+/* as variaveis globais roots de estilo */
 :root {
-  --black:       #0a0a0a;         
-  --white:      #f5f0e8;         
-  --yellow:     #f5c518;         
-  --l-red:  #e8432d;        
-  --d-gray:     #2a2a2a;         
-  --l-gray:     #555555;         
+  --preto:       #0a0a0a;         
+  --branco:      #f5f0e8;         
+  --amarelo:     #f5c518;         
+  --vermelho-c:  #e8432d;        
+  --cinza-e:     #2a2a2a;         
+  --cinza-c:     #555555;         
 
-  /* Font families */
-  --font-title: 'Bebas Neue', sans-serif;
-  --font-serif:  'DM Serif Display', serif;
-  --font-body:  'DM Sans', sans-serif;
+  /* Famílias de fonte   */
+  --fonte-titulo: 'Bebas Neue', sans-serif;
+  --fonte-serif:  'DM Serif Display', serif;
+  --fonte-corpo:  'DM Sans', sans-serif;
 
-  --radius: 4px;                  
-  --shadow: 4px 4px 0px var(--black); 
+  --raio:    4px;                  
+  --sombra:  4px 4px 0px var(--preto); 
 }
 
 
-/* reset to avoid bugs (reload) */
+/* reset para evitar bugs(reload)*/
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
-/* Smooth scrolling when clicking links */
+/* Rolagem suave ao clicar em links */
 html { scroll-behavior: smooth; }
 
-/* Base styles for the page body */
+/* Estilos base do corpo da página */
 body {
-  background-color: var(--white);
-  color: var(--black);
-  font-family: var(--font-body);
+  background-color: var(--branco);
+  color: var(--preto);
+  font-family: var(--fonte-corpo);
   font-size: 16px;
   line-height: 1.7;       
   overflow-x: hidden;     
 }
 
-/* Remove underline and inherit the color from the parent in all links */
+/* Remove sublinhado e herda a cor do pai em todos os links */
 a { color: inherit; text-decoration: none; }
 
-/* inline gap (to avoid crossing the line) */
+/* inline gap (para nao ultrapssar a linha) */
 img { max-width: 100%; display: block; }
 
-/* Remove marks from lists globally */
+/* Remove marcadores de listas globalmente */
 ul { list-style: none; }
 
 
-/* ANIMATIONS  @keyframes */
+/* ANIMAÇÕES  @keyframes */
 
-/* It appears, rising slightly. */
+/* Aparece subindo levemente */
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(30px); }
   to   { opacity: 1; transform: translateY(0); }
 }
 
-/* appears coming from the left */
+/* Aparece vindo da esquerda */
 @keyframes slideIn {
   from { opacity: 0; transform: translateX(-40px); }
   to   { opacity: 1; transform: translateX(0); }
 }
 
-/* Moves an element infinitely to the left */
+/* Move um elemento infinitamente para a esquerda */
 @keyframes marqueeScroll {
   from { transform: translateX(0); }
-  to   { transform: translateX(-50%); } /* Cut duplicate content in half. */
+  to   { transform: translateX(-50%); } /* conteudo duplicado corte pela metade */
 }
 
-/* Classes that apply the animations above */
+/* Classes que aplicam as animações acima */
 .fade-up  { animation: fadeUp  0.7s ease both; }
 .slide-in { animation: slideIn 0.7s ease both; }
 
@@ -81,93 +81,95 @@ ul { list-style: none; }
   position: sticky;
   top: 0;
   z-index: 100;
-  background: var(--black);
+  background: var(--preto);
   display: flex;
   align-items: center;          
   justify-content: space-between; 
   padding: 0 2.5rem;
   height: 64px;
-  border-bottom: 3px solid var(--yellow); 
+  border-bottom: 3px solid var(--amarelo); 
 }
 
-/* Typographic-style logo */
+/* Logotipo em estilo tipográfico */
 .navbar .logo {
-  font-family: var(--font-title);
+  font-family: var(--fonte-titulo);
   font-size: 1.8rem;
-  color: var(--yellow);
+  color: var(--amarelo);
   letter-spacing: 2px;
 }
 
-/* Horizontal menu links */
+/* Links do menu em linha horizontal */
 .navbar nav ul {
   display: flex;
-  gap: 2rem; /* space between */
+  gap: 2rem; /* espaço entre */
 }
 
 .navbar nav a {
-  font-family: var(--font-body);
+  font-family: var(--fonte-corpo);
   font-weight: 600;
   font-size: 0.85rem;
   text-transform: uppercase;
   letter-spacing: 1.5px;
-  color: var(--white);
-  transition: color 0.2s;  /* smooth transition when changing color on hover */
+  color: var(--branco);
+  transition: color 0.2s;  /* transição suave ao mudar a cor no hover */
   position: relative;      
 }
 
-/* Animated underline starts at 0 and goes to 100%. */
+/*
+  Underline animado começca em 0 vai ate 100% ".
+*/
 .navbar nav a::after {
   content: '';              
   position: absolute;
   left: 0; bottom: -4px;
-  width: 0;                 /* start invisible. */
+  width: 0;                 /* começa invisível */
   height: 2px;
-  background: var(--yellow);
+  background: var(--amarelo);
   transition: width 0.3s;
 }
-.navbar nav a:hover { color: var(--yellow); }
-.navbar nav a:hover::after { width: 100%; } /* expands on hover */
-.navbar nav a.ativo { color: var(--yellow); } /* Link to the current page */
+.navbar nav a:hover { color: var(--amarelo); }
+.navbar nav a:hover::after { width: 100%; } /* expande no hover */
+.navbar nav a.ativo { color: var(--amarelo); } /* link da página atual */
 
 
-/* BUTTONS  (.btn and variants) */
+/* BOTÕES  (.btn e variantes) */
 .btn {
   display: inline-block;
   padding: 0.75rem 1.75rem;
-  font-family: var(--font-body);
+  font-family: var(--fonte-corpo);
   font-weight: 600;
   font-size: 0.85rem;
   text-transform: uppercase;
   letter-spacing: 1.5px;
-  border: 2px solid var(--black);
-  box-shadow: var(--shadow);
+  border: 2px solid var(--preto);
+  box-shadow: var(--sombra);
   transition: transform 0.15s, box-shadow 0.15s;
   cursor: pointer;
 }
 .btn:hover {
-  transform: translate(-2px, -2px); /* goes up and moves slightly to the left */
-  box-shadow: 6px 6px 0px var(--black); /* shadow deepens — creates a 3D illusion */
+  transform: translate(-2px, -2px); /* sobe e vai levemente para esquerda */
+  box-shadow: 6px 6px 0px var(--preto); /* sombra aumenta — cria ilusão 3D */
 }
 
-/* color variants */
-.btn-amarelo { background: var(--yellow); color: var(--black); }
-.btn-coral   { background: var(--l-red); color: var(--white); }
+/* Variantes de cor */
+.btn-amarelo { background: var(--amarelo); color: var(--preto); }
+.btn-coral   { background: var(--vermelho-c); color: var(--branco); }
 .btn-outline {
-  background: transparent; /* transparent background — only the border appears */
-  color: var(--black);
-  border-color: var(--black);
+  background: transparent; /* fundo transparente — só a borda aparece */
+  color: var(--preto);
+  border-color: var(--preto);
 }
 
 
-/* (looping text strip)
-   The technique: duplicating the content and moving it -50% creates a perfect loop.
-   overflow: hidden hides what is outside the wrapper */
+/* (faixa de texto em loop)
+   A técnica: duplicar o conteúdo e mover -50% cria loop perfeito.
+   overflow: hidden esconde o que está fora do wrapper. */
 .marquee-wrap {
-  background: var(--yellow);
+  background: var(--amarelo);
   padding: 0.6rem 0;
   overflow: hidden;
-  border-top: 2px solid var(--black);
-  border-bottom: 2px solid var(--black);
+  border-top: 2px solid var(--preto);
+  border-bottom: 2px solid var(--preto);
 }
 .marquee-track {
   display: flex;
@@ -175,49 +177,49 @@ ul { list-style: none; }
   animation: marqueeScroll 20s linear infinite;
 }
 .marquee-track span {
-  font-family: var(--font-title);
+  font-family: var(--fonte-titulo);
   font-size: 1.2rem;
   letter-spacing: 3px;
-  padding: 0 2rem;             /* space */
-  color: var(--black);
+  padding: 0 2rem;             /* espaço  */
+  color: var(--preto);
 }
 
 
-/* HERO  (main section / cover) */
+/* HERO  (seção principal / capa) */
 .hero {
   min-height: 88vh;
   display: grid;
-  grid-template-columns: 1fr 1fr; /* two columns of equal weight */
+  grid-template-columns: 1fr 1fr; /* duas colunas de peso igual */
   align-items: center;
   padding: 4rem 2.5rem;
   gap: 3rem;
-  position: relative; /* necessary for the ::before to work */
+  position: relative; /* necessário para o ::before funcionar */
   overflow: hidden;
 }
 
 /*
-  Decorative watermark "DG" in the background.
-  pointer-events: none, does not block clicks.
-  Uses enormous font-size (30vw = 30% of the viewport width).
+  Marca d'água decorativa "DG" no fundo.
+  pointer-events: none → não bloqueia cliques.
+  Usa font-size enorme (30vw = 30% da largura da viewport).
 */
 .hero::before {
   content: 'DG';
   position: absolute;
   right: -40px; bottom: -60px;
-  font-family: var(--font-title);
+  font-family: var(--fonte-titulo);
   font-size: 30vw;
-  color: rgba(0,0,0,0.04); /* almost invisible — just texture */
+  color: rgba(0,0,0,0.04); /* quase invisível — só textura */
   pointer-events: none;
   line-height: 1;
 }
 
 .hero-texto { animation: fadeUp 0.8s ease both; }
 
-/* Small tag/badge above the title (ex: "NEW", "FEATURED") */
+/* Tag/badge pequena acima do título (ex: "NOVO", "EM DESTAQUE") */
 .hero-tag {
   display: inline-block;
-  background: var(--l-red);
-  color: var(--white);
+  background: var(--vermelho-c);
+  color: var(--branco);
   font-size: 0.75rem;
   font-weight: 600;
   text-transform: uppercase;
@@ -227,88 +229,88 @@ ul { list-style: none; }
 }
 
 /*
-  clamp(minimum, ideal, maximum) fluid size:
-  never smaller than 4rem, never larger than 8rem,
-  trying to maintain 8vw (8% of the viewport width).
+  clamp(mínimo, ideal, máximo) → tamanho fluido:
+  nunca menor que 4rem, nunca maior que 8rem,
+  tentando manter 8vw (8% da largura da janela).
 */
 .hero-titulo {
-  font-family: var(--font-title);
+  font-family: var(--fonte-titulo);
   font-size: clamp(4rem, 8vw, 8rem);
-  line-height: 0.95;    /* closely spaced lines — visual impact */
+  line-height: 0.95;    /* linhas bem juntas — impacto visual */
   letter-spacing: 2px;
   margin-bottom: 1.5rem;
 }
 
-/* Serif italic word within the title = typographic contrast */
+/* Palavra em itálico serif dentro do título = contraste tipográfico */
 .hero-titulo em {
-  font-family: var(--font-serif);
+  font-family: var(--fonte-serif);
   font-style: italic;
-  color: var(--l-red);
+  color: var(--vermelho-c);
 }
 
 .hero-sub {
   font-size: 1.05rem;
-  color: var(--l-gray);
-  max-width: 480px;     /* limits width for better readability */
+  color: var(--cinza-c);
+  max-width: 480px;     /* limita largura para melhor leitura */
   margin-bottom: 2rem;
 }
 
-/* Container for side-by-side buttons, with wrapping on small screens */
+/* Container dos botões lado a lado, com quebra em telas pequenas */
 .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
 
-/* Right side of the hero section with the image */
+/* Lado direito do hero com a imagem */
 .hero-visual {
-  position: relative;           /* allows positioning .hero-badge absolutely */
-  animation: fadeUp 0.8s 0.2s ease both; /* 0.2s delay — appears after the text */
+  position: relative;           /* permite posicionar .hero-badge absolutamente */
+  animation: fadeUp 0.8s 0.2s ease both; /* 0.2s de delay — aparece depois do texto */
 }
 
 .hero-card-img {
   width: 100%;
-  aspect-ratio: 4/5;       /*fixed portrait aspect ratio (ex: movie poster) */
-  object-fit: cover;        /* fills without distorting the image */
-  border: 3px solid var(--black);
-  box-shadow: 8px 8px 0 var(--black);
+  aspect-ratio: 4/5;       /* proporção retrato fixa (ex: pôster de filme) */
+  object-fit: cover;        /* preenche sem distorcer a imagem */
+  border: 3px solid var(--preto);
+  box-shadow: 8px 8px 0 var(--preto);
 }
 
 /*
-  Floating badge in the bottom-left corner of the image.
-  position: absolute works because .hero-visual has position: relative.
+  Badge flutuante no canto inferior esquerdo da imagem.
+  position: absolute funciona pois .hero-visual tem position: relative.
 */
 .hero-badge {
   position: absolute;
-  bottom: -24px; left: -24px; /* extends slightly outside the image */
-  background: var(--yellow);
-  border: 3px solid var(--black);
-  box-shadow: 4px 4px 0 var(--black);
+  bottom: -24px; left: -24px; /* sai levemente para fora da imagem */
+  background: var(--amarelo);
+  border: 3px solid var(--preto);
+  box-shadow: 4px 4px 0 var(--preto);
   padding: 1rem 1.25rem;
-  font-family: var(--font-title);
+  font-family: var(--fonte-titulo);
   font-size: 1rem;
   letter-spacing: 1px;
 }
 
 
-/* Padding to create a cleaner look */
+/*  Padding  para deixar mais limpo o visual. */
 .secao { padding: 5rem 2.5rem; }
 
-/* Section header: large number + title bottom-aligned */
+/* Cabeçalho de seção: número grande + título alinhados na base */
 .secao-topo {
   display: flex;
-  align-items: baseline; /* aligns with the text baseline */
+  align-items: baseline; /* alinha na linha de base do texto */
   gap: 1.5rem;
   margin-bottom: 3rem;
 }
 
-/* Decorative number with outline (-webkit-text-stroke) */
+/* Número decorativo com contorno (-webkit-text-stroke) */
 .secao-num {
-  font-family: var(--font-title);
+  font-family: var(--fonte-titulo);
   font-size: 5rem;
-  color: var(--yellow);
+  color: var(--amarelo);
   line-height: 1;
-  -webkit-text-stroke: 2px var(--black); /* border on the text itself */
+  -webkit-text-stroke: 2px var(--preto); /* borda no próprio texto */
 }
 
 .secao-titulo {
-  font-family: var(--font-title);
+  font-family: var(--fonte-titulo);
   font-size: clamp(2rem, 4vw, 3.5rem);
   letter-spacing: 1px;
   line-height: 1;
@@ -318,7 +320,7 @@ ul { list-style: none; }
   font-size: 0.8rem;
   text-transform: uppercase;
   letter-spacing: 3px;
-  color: var(--l-gray);
+  color: var(--cinza-c);
   margin-bottom: 0.5rem;
 }
 
@@ -331,41 +333,41 @@ ul { list-style: none; }
 }
 
 .card {
-  border: 2px solid var(--black);
-  box-shadow: var(--shadow);
+  border: 2px solid var(--preto);
+  box-shadow: var(--sombra);
   padding: 1.75rem;
-  background: var(--white);
+  background: var(--branco);
   transition: transform 0.2s, box-shadow 0.2s;
 }
 
-/* Hover: moves up and increases the shadow — same effect as the buttons */
+/* Hover: sobe e aumenta sombra — mesmo efeito dos botões */
 .card:hover {
   transform: translate(-3px, -3px);
-  box-shadow: 7px 7px 0 var(--black);
+  box-shadow: 7px 7px 0 var(--preto);
 }
 
 .card-icone { font-size: 2rem; margin-bottom: 1rem; }
 .card h3 {
-  font-family: var(--font-serif);
+  font-family: var(--fonte-serif);
   font-size: 1.3rem;
   margin-bottom: 0.5rem;
 }
-.card p { font-size: 0.92rem; color: var(--l-gray); }
+.card p { font-size: 0.92rem; color: var(--cinza-c); }
 
 
-/* SALARY TABLE */
+/* TABELA DE SALÁRIOS */
 .tabela-wrap { overflow-x: auto; } 
 
 .tabela-salario {
   width: 100%;
   border-collapse: collapse;
-  border: 2px solid var(--black);
+  border: 2px solid var(--preto);
   font-size: 0.95rem;
 }
 .tabela-salario th {
-  background: var(--black);
-  color: var(--yellow);
-  font-family: var(--font-title);
+  background: var(--preto);
+  color: var(--amarelo);
+  font-family: var(--fonte-titulo);
   font-size: 1rem;
   letter-spacing: 1px;
   padding: 0.9rem 1.2rem;
@@ -376,62 +378,62 @@ ul { list-style: none; }
   border-bottom: 1px solid rgba(0,0,0,0.1);
 }
 
-/* Zebra stripes: even lines against a slightly yellowish background */
+/* Listras zebradas: linhas pares com fundo levemente amarelado */
 .tabela-salario tr:nth-child(even) td { background: rgba(245,197,24,0.12); }
 
-/* Hover on the entire row */
+/* Hover na linha inteira */
 .tabela-salario tr:hover td { background: rgba(245,197,24,0.25); }
 
-.destaque { font-weight: 600; } /* bold text for important values */
+.destaque { font-weight: 600; } /* texto em negrito para valores importantes */
 
 
-/* List with a triangular icon—triangle created without extra HTML */
+/* LISTA COM ÍCONE TRIANGULAR  triangulo feito sem html extra aqui mesmo */
 .lista-bold li {
   display: flex;
-  align-items: flex-start;  /* aligns to the top when the text wraps */
+  align-items: flex-start;  /* alinha ao topo quando o texto quebra linha */
   gap: 0.75rem;
   padding: 0.8rem 0;
   border-bottom: 1px solid rgba(0,0,0,0.08);
   font-size: 0.95rem;
 }
 .lista-bold li::before {
-  content: '▶';             /* decorative icon generated by CSS */
-  color: var(--l-red);
+  content: '▶';             /* ícone decorativo gerado por CSS */
+  color: var(--vermelho-c);
   font-size: 0.7rem;
-  margin-top: 5px;          /* aligns vertically with the text */
-  flex-shrink: 0;           /* prevents the icon from shrinking */
+  margin-top: 5px;          /* alinha verticalmente com o texto */
+  flex-shrink: 0;           /* não deixa o ícone encolher */
 }
 
 
-/* HIGHLIGHT STRIP (CTA / call-to-action banner) – compatible with small screens like mobile phones */
+/* FAIXA DE DESTAQUE (CTA / banner de chamada) - compativel com telas pequenas tipo celular */
 .faixa-destaque {
-  background: var(--black);
-  color: var(--white);
+  background: var(--preto);
+  color: var(--branco);
   padding: 4rem 2.5rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 2rem;
   flex-wrap: wrap;
-  border-top: 3px solid var(--yellow);
-  border-bottom: 3px solid var(--yellow);
+  border-top: 3px solid var(--amarelo);
+  border-bottom: 3px solid var(--amarelo);
 }
 .faixa-destaque h2 {
-  font-family: var(--font-title);
+  font-family: var(--fonte-titulo);
   font-size: clamp(2rem, 4vw, 3.5rem);
   max-width: 600px;
   line-height: 1;
 }
 .faixa-destaque h2 em {
-  color: var(--yellow);
-  font-family: var(--font-serif); /* typographic contrast within the title */
+  color: var(--amarelo);
+  font-family: var(--fonte-serif); /* contraste tipográfico dentro do título */
 }
 
 
-/* header of internal pages */
+/* cabeçalho de páginas internas */
 .hero-interno {
-  background: var(--black);
-  color: var(--white);
+  background: var(--preto);
+  color: var(--branco);
   padding: 5rem 2.5rem 4rem;
   position: relative;
   overflow: hidden;
@@ -441,36 +443,36 @@ ul { list-style: none; }
   position: absolute;
   bottom: 0; left: 0;
   width: 100%; height: 4px;
-  background: linear-gradient(to right, var(--yellow), var(--l-red));
+  background: linear-gradient(to right, var(--amarelo), var(--vermelho-c));
 }
 .hero-interno .tag-pg {
   font-size: 0.75rem;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 3px;
-  color: var(--yellow);
+  color: var(--amarelo);
   margin-bottom: 1rem;
 }
 .hero-interno h1 {
-  font-family: var(--font-title);
+  font-family: var(--fonte-titulo);
   font-size: clamp(3rem, 7vw, 6rem);
   line-height: 0.95;
   letter-spacing: 1px;
   margin-bottom: 1.25rem;
 }
 .hero-interno h1 em {
-  font-family: var(--font-serif);
-  color: var(--l-red);
+  font-family: var(--fonte-serif);
+  color: var(--vermelho-c);
 }
 .hero-interno p {
   font-size: 1.05rem;
-  color: rgba(245,240,232,0.7); /* white with 70% opacity — hierarchy */
+  color: rgba(245,240,232,0.7); /* branco com 70% de opacidade — hierarquia */
   max-width: 600px;
 }
 
 
-/* UNIVERSITY GRID (.univ-grid)
-   Same auto-fill pattern as the cards-grid, 300px minimum column width */
+/* GRID DE UNIVERSIDADES  (.univ-grid)
+   Mesmo padrão auto-fill do cards-grid, coluna mínima de 300px. */
 
 .univ-grid {
   display: grid;
@@ -478,67 +480,67 @@ ul { list-style: none; }
   gap: 1.25rem;
 }
 .univ-card {
-  border: 2px solid var(--black);
-  box-shadow: var(--shadow);
+  border: 2px solid var(--preto);
+  box-shadow: var(--sombra);
   padding: 1.5rem;
   display: flex;
-  flex-direction: column; /* stacks the children vertically */
+  flex-direction: column; /* empilha os filhos verticalmente */
   gap: 0.4rem;
-  background: var(--white);
+  background: var(--branco);
   transition: transform 0.2s, box-shadow 0.2s;
 }
 .univ-card:hover {
   transform: translate(-3px, -3px);
-  box-shadow: 7px 7px 0 var(--black);
+  box-shadow: 7px 7px 0 var(--preto);
 }
 
-/* University acronym as a yellow badge */
+/* Sigla da universidade como badge amarelo */
 .univ-sigla {
   display: inline-block;
-  background: var(--yellow);
-  border: 2px solid var(--black);
-  font-family: var(--font-title);
+  background: var(--amarelo);
+  border: 2px solid var(--preto);
+  font-family: var(--fonte-titulo);
   font-size: 1.1rem;
   padding: 0.15rem 0.6rem;
   margin-bottom: 0.5rem;
 }
 
-.univ-card h3 { font-family: var(--font-serif); font-size: 1.15rem; }
+.univ-card h3 { font-family: var(--fonte-serif); font-size: 1.15rem; }
 .univ-card .local {
   font-size: 0.82rem;
-  color: var(--l-gray);
+  color: var(--cinza-c);
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 1px;
 }
-.univ-card p { font-size: 0.9rem; color: var(--l-gray); }
+.univ-card p { font-size: 0.9rem; color: var(--cinza-c); }
 
 
-/* GRID for the companies */
+/* GRID para as empresas */
 .emp-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
   gap: 1rem;
 }
 .emp-card {
-  border: 2px solid var(--black);
-  box-shadow: var(--shadow);
+  border: 2px solid var(--preto);
+  box-shadow: var(--sombra);
   padding: 1.5rem 1.25rem;
-  background: var(--white);
+  background: var(--branco);
   text-align: center;
   transition: transform 0.2s, box-shadow 0.2s;
 }
 .emp-card:hover {
   transform: translate(-3px, -3px);
-  box-shadow: 7px 7px 0 var(--black);
-  background: var(--yellow); /* The background changes completely on hover. */
+  box-shadow: 7px 7px 0 var(--preto);
+  background: var(--amarelo); /* fundo muda completamente no hover */
 }
 .emp-card .emp-ico { font-size: 2.5rem; margin-bottom: 0.75rem; }
-.emp-card h4 { font-family: var(--font-serif); font-size: 1.1rem; margin-bottom: 0.3rem; }
-.emp-card p { font-size: 0.82rem; color: var(--l-gray); }
+.emp-card h4 { font-family: var(--fonte-serif); font-size: 1.1rem; margin-bottom: 0.3rem; }
+.emp-card p { font-size: 0.82rem; color: var(--cinza-c); }
 
 
-/* grid for the sections */
+/* grid para as seçoes */
 .sobre-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -547,69 +549,69 @@ ul { list-style: none; }
 }
 .sobre-img {
   width: 100%;
-  aspect-ratio: 3/4; /* portrait */
+  aspect-ratio: 3/4; /* retrato */
   object-fit: cover;
-  border: 3px solid var(--black);
-  box-shadow: 8px 8px 0 var(--black);
+  border: 3px solid var(--preto);
+  box-shadow: 8px 8px 0 var(--preto);
 }
 .sobre-texto h2 {
-  font-family: var(--font-title);
+  font-family: var(--fonte-titulo);
   font-size: 2.5rem;
   margin-bottom: 1rem;
 }
-.sobre-texto p { margin-bottom: 1rem; color: var(--l-gray); }
+.sobre-texto p { margin-bottom: 1rem; color: var(--cinza-c); }
 
 
-/* REFERENCE BOX */
+/* BOX DE REFERÊNCIAS */
 .referencias {
-  background: var(--d-gray);
-  color: var(--white);
+  background: var(--cinza-e);
+  color: var(--branco);
   padding: 2.5rem;
   margin-top: 2rem;
-  border-left: 6px solid var(--yellow); /* lateral emphasis line */
+  border-left: 6px solid var(--amarelo); /* linha de ênfase lateral */
 }
 .referencias h3 {
-  font-family: var(--font-title);
+  font-family: var(--fonte-titulo);
   font-size: 1.5rem;
-  color: var(--yellow);
+  color: var(--amarelo);
   margin-bottom: 1.5rem;
   letter-spacing: 1px;
 }
-.referencias ol { padding-left: 1.5rem; } /* numbering */
+.referencias ol { padding-left: 1.5rem; } /* numeração */
 .referencias li {
   font-size: 0.88rem;
   line-height: 1.8;
-  color: rgba(245,240,232,0.8); /* slightly transparent */
+  color: rgba(245,240,232,0.8); /* levemente transparente  */
   margin-bottom: 0.75rem;
   border-bottom: 1px solid rgba(255,255,255,0.07);
   padding-bottom: 0.75rem;
 }
 
 
-/* grid for the footer */
+/* grid para o rodaóe */
 footer {
-  background: var(--black);
-  color: var(--white);
+  background: var(--preto);
+  color: var(--branco);
   padding: 3rem 2.5rem 1.5rem;
-  border-top: 4px solid var(--yellow);
+  border-top: 4px solid var(--amarelo);
 }
 
 .footer-grid {
   display: grid;
-  grid-template-columns: 2fr 1fr 1fr; /* left column is twice the size of the others */
+  grid-template-columns: 2fr 1fr 1fr; /* coluna esquerda tem o dobro de tamanho do que as outras */
   gap: 3rem;
   margin-bottom: 2.5rem;
 }
 
 .footer-logo {
-  font-family: var(--font-title);
+  font-family: var(--fonte-titulo);
   font-size: 2.5rem;
-  color: var(--yellow);
+  color: var(--amarelo);
   letter-spacing: 3px;
   margin-bottom: 0.75rem;
 }
 
-/* Text  */
+/* Texto  */
 .footer-desc {
   font-size: 0.88rem;
   color: rgba(245,240,232,0.5);
@@ -617,21 +619,21 @@ footer {
 }
 
 footer h4 {
-  font-family: var(--font-title);
+  font-family: var(--fonte-titulo);
   font-size: 1rem;
   letter-spacing: 2px;
-  color: var(--yellow);
+  color: var(--amarelo);
   margin-bottom: 1rem;
 }
 footer ul li { margin-bottom: 0.5rem; }
 footer ul a {
   font-size: 0.88rem;
-  color: rgba(245,240,232,0.6); /* light gray — secondary links */
+  color: rgba(245,240,232,0.6); /* cinza suave — links secundários */
   transition: color 0.2s;
 }
-footer ul a:hover { color: var(--yellow); }
+footer ul a:hover { color: var(--amarelo); }
 
-/* Bottom line of the footer */
+/* Linha inferior do rodape */
 .footer-bottom {
   border-top: 1px solid rgba(255,255,255,0.1);
   padding-top: 1.25rem;
@@ -644,34 +646,34 @@ footer ul a:hover { color: var(--yellow); }
 }
 
 
-/* RESPONSIVENESS – compatibility for smaller screens like mobile phones @media */
+/* RESPONSIVIDADE  - compatibilidade para telas menores tipo celular @media */
 @media (max-width: 768px) {
-  /* Hero moves to a single column. */
+  /* Hero vai para coluna única */
   .hero {
     grid-template-columns: 1fr;
     min-height: auto;
     padding: 3rem 1.5rem;
   }
 
-  /* Decorative watermark disappears on mobile (doesn't fit well) */
+  /* Marca d'água decorativa some no mobile (não cabe bem) */
   .hero::before { display: none; }
 
-  /* Visual aspect of the hero section disappears — only the text appears on mobile. */
+  /* Lado visual do hero some — só o texto aparece no mobile */
   .hero-visual { display: none; }
 
-  /* About: stacks image and text */
+  /* Seção sobre: empilha imagem e texto */
   .sobre-grid { grid-template-columns: 1fr; }
 
-  /* Footer: 3 columns → 1 column */
+  /* Rodapé: 3 colunas → 1 coluna */
   .footer-grid { grid-template-columns: 1fr; }
 
-  /* Less side padding on mobile */
+  /* Menos padding lateral no mobile */
   .navbar { padding: 0 1.5rem; }
 
-  /* Closer menu links (smaller gap) */
+  /* Links do menu mais próximos (menos gap) */
   .navbar nav ul { gap: 1rem; }
 
-  /* Less padding in sections */
+  /* Menos padding nas seções */
   .secao { padding: 3rem 1.5rem; }
   .faixa-destaque { padding: 3rem 1.5rem; }
   .hero-interno { padding: 3rem 1.5rem; }
