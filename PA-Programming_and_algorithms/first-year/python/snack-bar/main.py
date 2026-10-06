@@ -3,237 +3,237 @@ import os
 
 DATA_FILE = "lantern_snack_bar.json"
 
-produtos = []
-pedidos = []
+products = []
+orders = []
 
-# Carrega as informações antigas e cria a pasta do json.
+# Load the data
 def load_data():
-    global produtos, pedidos
+    global products, orders
 
     if not os.path.exists(DATA_FILE):
-       produtos = [] 
-       pedidos = []
+       products = [] 
+       orders = []
        return
 
     with open(DATA_FILE, "r", encoding="utf-8") as file:
         data = json.load(file)
-        produtos = data.get("produtos", [])
-        pedidos = data.get("pedidos", [])
+        products = data.get("products", [])
+        orders = data.get("orders", [])
 
-# Salva as informações
+# Save the data
 def save_data():
     data = {
-        "produtos": produtos,
-        "pedidos": pedidos
+        "products": products,
+        "orders": orders
     }
     
     with open(DATA_FILE, "w", encoding="utf-8") as file:
         json.dump(data, file, indent=4, ensure_ascii=False)
 
-# Adiciona produtos novos
+# Register new products
 def register_product():
-    print("\n Registre um produto ")
-    codigo = input("Insira o código do produto: ")
+    print("\n Register a product ")
+    code = input("Enter the product code: ")
 
-    if find_product_by_code(codigo) is not None:
-        print("Um produto com esse código ja existe. ")
+    if find_product_by_code(code) is not None:
+        print("A product with this code already exists. ")
         return
 
-    nome = input("Nome do produto: ")
+    name = input("Enter the product name: ")
 
-# Tratamento de erro
+# Error handling
     try:
-        preco = float(input("Preço do produto: "))
-        estoque = int(input("Quantidade em estoque: "))
+        price = float(input("Enter the product price: "))
+        stock = int(input("Enter the product stock: "))
     except ValueError:
-        print("\n Preço ou quantidade inválido, tente novamente. ")
+        print("\n Invalid price or quantity, please try again. ")
         return
 
-    produto = {
-        "codigo": codigo,
-        "nome": nome,
-        "preço": preco,
-        "estoque": estoque
+    product = {
+        "code": code,
+        "name": name,
+        "price": price,
+        "stock": stock
     }
 
-    produtos.append(produto)
+    products.append(product)
     save_data()
 
-    print("Produto cadastrado com sucesso!")
+    print("Product registered successfully!")
 
-# Mostra todos os produtos cadastrados
+# Show all registered products
 def list_products():
-    if len(produtos) == 0:
-        print ("Nenhum produto cadastrado. ")
+    if len(products) == 0:
+        print ("No products registered. ")
         return
     
-    print("\n Produtos cadastrados ")
-    for produto in produtos:
-        print(f"Código: {produto['codigo']}")
-        print(f"Nome: {produto['nome']}")
-        print(f"Preço: R$ {produto['preço']:.2f}")
-        print(f"Estoque: {produto['estoque']}")
+    print("\n Registered products ")
+    for product in products:
+        print(f"Code: {product['code']}")
+        print(f"Name: {product['name']}")
+        print(f"Price: R$ {product['price']:.2f}")
+        print(f"Stock: {product['stock']}")
         print("-" * 30)
 
-# Procura os produtos já existentes
-def find_product_by_code(codigo):
-    for produto in produtos:
-        if produto["codigo"] == codigo:
-            return produto
+# Look for existing products
+def find_product_by_code(code):
+    for product in products:
+        if product["code"] == code:
+            return product
     return None
 
-# Faz o pedido do cliente
+# Make a customer order
 def make_order():
-    if len(produtos) == 0:
-        print("Nenhum produto cadastrado.")
+    if len(products) == 0:
+        print("No products registered.")
         return
 
-    cliente_nome = input("\n Nome do cliente: ")
+    customer_name = input("\n Customer name: ")
 
     list_products()
 
-    codigo = input("Digite o código do produto: ")
-    produto = find_product_by_code(codigo)
+    code = input("Enter the product code: ")
+    product = find_product_by_code(code)
 
-    if produto is None:
-        print("\n Produto não existe.")
+    if product is None:
+        print("\n Product does not exist.")
         return
 
-# Tratamento de erro denovo 
+# Error handling 
     try:
-        quantidade = int(input("Quantidade desejada: "))
+        quantity = int(input("Desired quantity: "))
     except ValueError:
-        print("\n Quantidade inválida, tente novamete. ")
+        print("\n Invalid quantity, please try again. ")
         return
 
-    if quantidade <= 0:
-        print("Quantidade inválida.")
+    if quantity <= 0:
+        print("Invalid quantity.")
         return
 
-    if quantidade > produto["estoque"]:
-        print("Estoque insuficiente.")
+    if quantity > product["stock"]:
+        print("Insufficient stock.")
         return
 
-    # Caucula o preço a pagar
-    total = quantidade * produto["preço"]
+    # Calculate the total price
+    total = quantity * product["price"]
 
-    produto["estoque"] -= quantidade
+    product["stock"] -= quantity
 
-    pedido = {
-        "cliente_nome": cliente_nome,
-        "produto_codigo": produto["codigo"],
-        "produto_nome": produto["nome"],
-        "quantidade": quantidade,
+    order = {
+        "customer_name": customer_name,
+        "product_code": product["code"],
+        "product_name": product["name"],
+        "quantity": quantity,
         "total": total
     }
 
-    pedidos.append(pedido)
+    orders.append(order)
     save_data()
 
-    print("Pedido realizado com sucesso ")
+    print("Order placed successfully.")
     print(f"Total: R$ {total:.2f}")
 
-# Mostra todos os pedidos feitos
+# Show all placed orders
 def list_orders():
-    if len(pedidos) == 0:
-        print("Nenhum pedido realizado ")
+    if len(orders) == 0:
+        print("No orders placed.")
         return
-    
-    print("\n Pedidos:" )
-    for pedido in pedidos:
-        print(f"Cliente: {pedido['cliente_nome']}")
-        print(f"Produto: {pedido['produto_nome']}")
-        print(f"Quantidade: {pedido['quantidade']}")
-        print(f"Total: R$ {pedido['total']:.2f}")
+
+    print("\n Orders:")
+    for order in orders:
+        print(f"Customer: {order['customer_name']}")
+        print(f"Product: {order['product_name']}")
+        print(f"Quantity: {order['quantity']}")
+        print(f"Total: R$ {order['total']:.2f}")
         print("-" * 30)
 
-# extra 1: muda o preço do produto
+# extra 1: change the price of a product
 def alter_product_price():
-    codigo = input ("\n Digite o código do produto para mudar o preço: ")
-    produto = find_product_by_code(codigo)
+    code = input("\n Enter the product code to change the price: ")
+    product = find_product_by_code(code)
 
-    if produto is None:
-        print("O produto não existe.")
+    if product is None:
+        print("The product does not exist.")
         return
 
-    # tratamento de erro
+    # error handling
     try:
-        novo_preco = float(input("Digite o novo preço: "))
+        new_price = float(input("Enter the new price: "))
     except ValueError:
-        print("Preço inválido, tente novamente.")
+        print("Invalid price, please try again.")
         return
 
-    produto["preço"] = novo_preco
+    product["price"] = new_price
     save_data()
-    print("Preço do produto atualizado.")
+    print("Product price updated.")
 
-# extra 2: remove os produtos
+# extra 2: remove product
 def remove_product():
-    codigo = input("\n Digite o código do produto para removê-lo: ")
-    produto = find_product_by_code(codigo)
+    code = input("\n Enter the product code to remove: ")
+    product = find_product_by_code(code)
 
-    if produto is None:
-        print("O produto não existe.")
+    if product is None:
+        print("The product does not exist.")
         return
 
-    produtos.remove(produto)
+    products.remove(product)
     save_data()
-    print("\n Produto removido com sucesso.")
+    print("\n Product removed successfully.")
 
-# extra 3: pesquisar produto por nome
+# extra 3: search product by name
 def search_product_by_name():
-    nome = input("\n Digite o nome do produto: ")
-    encontrados = [produto for produto in produtos if nome.lower() in produto["nome"].lower()]
+    name = input("\n Enter the product name: ")
+    found = [product for product in products if name.lower() in product["name"].lower()]
 
-    if len(encontrados) == 0:
-        print("Não existe um produto com esse nome.")
+    if len(found) == 0:
+        print("No product with that name exists.")
         return
 
-    print("\n Produtos encontrados:")
-    for produto in encontrados:
-        print(f"Código: {produto['codigo']}")
-        print(f"Nome: {produto['nome']}")
-        print(f"Preço: R$ {produto['preço']:.2f}")
-        print(f"Estoque: {produto['estoque']}")
+    print("\n Products found:")
+    for product in found:
+        print(f"Code: {product['code']}")
+        print(f"Name: {product['name']}")
+        print(f"Price: R$ {product['price']:.2f}")
+        print(f"Stock: {product['stock']}")
         print("-" * 30)
 
-# extra 4: relatório de vendas
+# extra 4: sales report
 def sales_report():
-    if len(pedidos) == 0:
-        print("Nenhuma venda realizada.")
+    if len(orders) == 0:
+        print("No sales recorded.")
         return
 
-    print("\n Relatório de Vendas:")
-    for pedido in pedidos:
-        print(f"Cliente: {pedido['cliente_nome']}")
-        print(f"Produto: {pedido['produto_nome']}")
-        print(f"Quantidade: {pedido['quantidade']}")
-        print(f"Total: R$ {pedido['total']:.2f}")
+    print("\n Sales Report:")
+    for order in orders:
+        print(f"Customer: {order['customer_name']}")
+        print(f"Product: {order['product_name']}")
+        print(f"Quantity: {order['quantity']}")
+        print(f"Total: R$ {order['total']:.2f}")
         print("-" * 30)
 
-# Texto do menu
+# Menu text
 def show_menu():
-    print("\n Sistema Lanchonete \n")
-    print("1 - Cadastrar produto")
-    print("2 - Ver produtos")
-    print("3 - Fazer pedido")
-    print("4 - Ver pedidos realizados")
-    print("5 - Mudar preço do produto")
-    print("6 - Remover produto")
-    print("7 - Pesquisar produto por nome")
-    print("8 - Relatório de vendas")
-    print("0 - Sair")
+    print("\n Snack bar system \n")
+    print("1 - Register product")
+    print("2 - List products")
+    print("3 - Make order")
+    print("4 - List orders")
+    print("5 - Change product price")
+    print("6 - Remove product")
+    print("7 - Search product by name")
+    print("8 - Sales report")
+    print("0 - Exit")
 
 def main():
     load_data()
 
-    # Le oque o usuário digitou no menu 
+    # Reads what the user typed in the menu
     while True:
         show_menu()
-        opcao = input("\n escolha uma opção ")
+        option = input("\n choose an option: ")
 
-        #'match case' no lugar de 'if' para melhor leitura do código
-        match opcao:
+        #'match case' instead 'if' for better code readability
+        match option:
             case '1':
                 register_product()
             case '2':
@@ -252,9 +252,9 @@ def main():
                 sales_report()
             case '0':
                 save_data()
-                print("\n Sistema encerrado, até a próxima. ")
+                print("\n System closed, see you next time. ")
                 break
             case _:
-                print ("opção inválida, tente novamente ")
+                print ("Invalid option, please try again ")
 
 main()
