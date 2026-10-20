@@ -1,4 +1,4 @@
-// aqui fica o endereço da nossa API (o backend em FastAPI)
+// endereço da API (o backend em FastAPI)
 // enquanto tô testando na minha máquina uso o localhost, depois troco pra URL do Railway
 const URL_API = "https://aurea-den-production.up.railway.app";
 
